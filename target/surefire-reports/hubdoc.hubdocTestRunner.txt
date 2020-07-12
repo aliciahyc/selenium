@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: hubdoc.hubdocTestRunner
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 27.018 s <<< FAILURE! - in hubdoc.hubdocTestRunner
+process a document(Use the hubdoc to manage my documents)  Time elapsed: 16.989 s  <<< ERROR!
+org.openqa.selenium.NoSuchSessionException: 
+Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'aliciahtraderev', ip: 'fe80:0:0:0:1c96:49a:324c:7898%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.6', java.version: '11.0.2'
+Driver info: driver.version: RemoteWebDriver
+
+upload a document(Use the hubdoc to manage my documents)  Time elapsed: 9.722 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<3>
+
