@@ -1,7 +1,6 @@
 # hubdoc
 
-Web automation test project setup and running steps
-Web automation test project test cases
+This is an automation test project against the application under test: https://app.hubdoc.com/
 
 * Build Management - Maven 
 * Test Frameworks - Cucumber, Junit, Selenium
@@ -19,31 +18,29 @@ Web automation test project test cases
 1. download the project from github
 2. Use IntelliJ or other Java IDE to open the project
 3. Dependencies and configurations on pom.xml file
+4. Install Google Chrome with Version 83.0.4103
 
 ### Where can I find the test scenarios of this project? ###
 
-Test scenarios directory:
-src/test/resources/features/hubdoc.feature
+Test scenarios directory: src/test/resources/features/hubdoc.feature
 
 ### What should I know before I run the  project? ###
 
-1. Scenario: upload a document will fail and the browser needs to close manually
-    Reason: 
-    <input id="file-upload" name="file_upload" type="file" multiple="true" style="display: none;">
-    This file_upload element is not interactive with ui user. Therefore selenium is not able to use sendKeys() to 
+1. Scenario: upload a document will fail and the browser needs to close manually.
+   The Reason is: the file_upload element is not interactive (style="display: none;") with ui user. Therefore selenium is unable to use sendKeys() to 
     upload the document.
     After change the element to be interactive (style="display: block;"), SHA-256 integrity and Content Security 
-    Policy prevent the submission of the upload_file (script injection prevention).
-2. Before runs Scenario: process a document, make sure there is at least one document in the "All Document" folder
+    Policy which are implemented in the application under test, prevent the submission of the upload_file (script injection prevention).
+2. Before runs Scenario "process a document", make sure in the application under test, there is at least one document in the "All Document" folder
     with "all" tag. 
-3. Scenario: process a document - step: Then I download document
-    This step needs to add assertion. Based on the test environment, specify the download destination directory, verify
-    if the directory has the new downloaded document. 
+3. Scenario "process a document" with step "Then I download document" does not have assertions. The reason is when download files in different computer, 
+    the download destination directory would be different. If adding assertions to this step, the test may pass in one computer but fail in another
+    computer. So the assertion should be added based on the specific test environment. 
 
 ### How do I run the project? ###
 
-On the terminal:
-step 1: navigate to the project directory
+On the terminal follow the steps. 
+Step 1: navigate to the project directory. 
 step 2: In the project directory run the following maven command: 
     mvn -B clean test -Dbrowser=chrome -Dcucumber.options=src/test/resources/features/hubdoc.feature -Dtags=@test  
     
